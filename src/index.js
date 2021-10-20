@@ -1,5 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+// 导入 antd-mobile 样式
+import "antd-mobile/dist/antd-mobile.css";
 
-ReactDOM.render(<App />,document.getElementById('root'));
+import "./index.css";
+
+ReactDOM.render(<App />, document.getElementById("root"));
