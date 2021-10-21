@@ -3,10 +3,10 @@ body {
   height: 100%;
   font-family: "Microsoft YaHei";
   color: #333;
-  background-color: #fff;
+  background-color: rgb(238, 230, 230);
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 

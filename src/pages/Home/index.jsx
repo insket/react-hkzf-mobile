@@ -6,7 +6,7 @@ import Profile from "../Profile";
 import CityList from "../CityList";
 import ErrorPage from "../../components/ErrorPage";
 import { TabBar } from "antd-mobile";
-import "./index.css";
+import "./index.scss";
 
 // TopBar 数据
 const tabItems = [
