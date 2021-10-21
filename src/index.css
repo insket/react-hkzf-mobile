@@ -5,6 +5,11 @@ body {
   color: #333;
   background-color: #fff;
 }
-* {
+
+*{
   box-sizing: border-box;
+}
+
+h2{
+  margin: 0;
 }
