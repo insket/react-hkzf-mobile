@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Carousel, Flex, Grid, WingBlank  } from 'antd-mobile';
-import { reqBanners, reqGroups, reqNews, reqArea } from '../../api/home_page'
+import { reqBanners, reqGroups, reqNews } from '../../api/home_page'
+import { getCurrentCity } from '../../utils'
 import './index.scss'
 
 // 导航菜单navs数据
@@ -40,18 +41,14 @@ export default class HomePage extends Component {
     currentCityName: ''  // 当前城市名称
   }
 
-  componentDidMount () {
+  async componentDidMount () {
     this.getswiper()
     this.getGroups()
     this.getNews()
 
-    // 通过IP定位获取当前城市名称
-    const currentCity = new window.BMapGL.LocalCity();
-    currentCity.get(async res => {
-      const { body } = await reqArea(res.name)
-      this.setState({
-        currentCityName: body.label
-      })
+    const curCuty = await getCurrentCity()
+    this.setState({
+      currentCityName: curCuty.label
     })
   }
 
