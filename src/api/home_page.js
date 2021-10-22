@@ -29,3 +29,13 @@ export const reqNews = (area) => {
     url: `/home/news?area=${area}`
   })
 }
+
+/*
+      reqArea  获取 当前城市 数据
+*/
+export const reqArea = (name) => {
+  return request ({
+    methods: 'get',
+    url: `area/info?name=${name}`
+  })
+}

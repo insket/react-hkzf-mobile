@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Carousel, Flex, Grid, WingBlank  } from 'antd-mobile';
-import { reqBanners, reqGroups, reqNews } from '../../api/home_page'
+import { reqBanners, reqGroups, reqNews, reqArea } from '../../api/home_page'
 import './index.scss'
 
 // 导航菜单navs数据
@@ -36,13 +36,23 @@ export default class HomePage extends Component {
     swipers: [], // swiper
     isSwiperLoaded: false, // 判断 swiper 是否加载完成
     groups: [], // 租房小组数据
-    news: [] // 最新资讯
+    news: [], // 最新资讯
+    currentCityName: ''  // 当前城市名称
   }
 
   componentDidMount () {
     this.getswiper()
     this.getGroups()
     this.getNews()
+
+    // 通过IP定位获取当前城市名称
+    const currentCity = new window.BMapGL.LocalCity();
+    currentCity.get(async res => {
+      const { body } = await reqArea(res.name)
+      this.setState({
+        currentCityName: body.label
+      })
+    })
   }
 
   // 获取 swiper
@@ -141,7 +151,7 @@ export default class HomePage extends Component {
           <Flex className='search'>
             {/*  位置  */}
             <div className='location' onClick={() => {this.props.history.push('/citylist')}}>
-              <span className='name'>上海</span>
+              <span className='name'>{this.state.currentCityName}</span>
               <i className='iconfont icon-xiala'></i>
             </div>
             {/*  搜索表单 */}
